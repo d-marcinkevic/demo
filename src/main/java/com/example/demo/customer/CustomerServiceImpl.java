@@ -19,6 +19,9 @@ public class CustomerServiceImpl implements CustomerService {
                 return HttpStatus.CONFLICT;
             }
         }
+        if(customer.getName() == null || customer.getSurname() == null || customer.getBirthDate() == null || customer.getTelephoneNumber() == null || customer.getEmail() == null){
+            return  HttpStatus.UNPROCESSABLE_ENTITY;
+        }
         customers.add(tempCustomer);
         return HttpStatus.OK;
     }
