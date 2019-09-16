@@ -66,7 +66,7 @@ public class CustomerRestControllerIntegrationTest {
     }
 
     @Test
-    public void canCreateAndRetrieveANewContact() throws IOException {
+    public void canCreateAndRetrieveANewCustomer() throws IOException {
         //given
         Customer customer = new Customer();
         customer.setName("TestName3");
@@ -80,10 +80,10 @@ public class CustomerRestControllerIntegrationTest {
         given(customerService.getCustomerByName("TestName3")).willReturn(customer);
 
         //when
-        ResponseEntity<Customer> contactGetResponse = restTemplate.getForEntity("/api/v1/contacts/TestName3", Customer.class);
+        ResponseEntity<Customer> customerGetResponse = restTemplate.getForEntity("/api/v1/customers/TestName3", Customer.class);
 
         //then
-        assertThat(contactGetResponse.getBody().equals(customer));
-        System.out.println("qq: " + contactGetResponse.getBody());
+        assertThat(customerGetResponse.getBody().equals(customer));
+        System.out.println("qq: " + customerGetResponse.getBody());
     }
 }
